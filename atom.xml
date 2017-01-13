@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>libeibei</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-01-13T15:35:55.616Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>libeibei</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>终于开始写博客</title>
+    <link href="http://yoursite.com/2017/01/13/%E7%BB%88%E4%BA%8E%E5%BC%80%E5%A7%8B%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2017/01/13/终于开始写博客/</id>
+    <published>2017-01-13T14:12:22.000Z</published>
+    <updated>2017-01-13T15:35:55.616Z</updated>
+    
+    <content type="html"><![CDATA[<p>拖了好久终于搭建了一个觉得舒适的博客，自己动手用写过博客系统，也用Ghost搭建过，但都不理想，也因此将开始写博文的事情一拖再拖。</p>
+<p>测试下公式</p>
+<p>$s_1$</p>
+<p>$$<br>s_1<br>$$</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;拖了好久终于搭建了一个觉得舒适的博客，自己动手用写过博客系统，也用Ghost搭建过，但都不理想，也因此将开始写博文的事情一拖再拖。&lt;/p&gt;
+&lt;p&gt;测试下公式&lt;/p&gt;
+&lt;p&gt;$s_1$&lt;/p&gt;
+&lt;p&gt;$$&lt;br&gt;s_1&lt;br&gt;$$&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+</feed>
