@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-22T03:49:35.737Z</updated>
+  <updated>2017-03-22T04:11:53.544Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2017/01/13/CSS%E5%B8%83%E5%B1%80%E5%8D%81%E5%85%AB%E8%88%AC%E6%AD%A6%E8%89%BA%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%E4%BA%86/"/>
     <id>http://yoursite.com/2017/01/13/CSS布局十八般武艺都在这里了/</id>
     <published>2017-01-13T14:12:22.000Z</published>
-    <updated>2017-03-22T03:49:35.737Z</updated>
+    <updated>2017-03-22T04:11:53.544Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>本文首发于<a href="">知乎专栏：前端指南</a></p>
+<p>本文首发于<a href="https://zhuanlan.zhihu.com/p/25565751" target="_blank" rel="external">知乎专栏：前端指南</a></p>
 </blockquote>
 <h1 id="CSS布局"><a href="#CSS布局" class="headerlink" title="CSS布局"></a>CSS布局</h1><p>布局是CSS中一个重要部分，本文总结了CSS布局中的常用技巧，包括常用的水平居中、垂直居中方法，以及单列布局、多列布局的多种实现方式（包括传统的盒模型布局和比较新的flex布局实现），希望能给需要的小伙伴带来一些帮助。</p>
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ol>
@@ -157,7 +157,7 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;本文首发于&lt;a href=&quot;&quot;&gt;知乎专栏：前端指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本文首发于&lt;a href=&quot;https://zhuanlan.zhihu.com/p/25565751&quot;&gt;知乎专栏：前端指南&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&quot;CSS布局&quot;&gt;&lt;a href=&quot;#CSS布局&quot; class=&quot;headerlink&quot; title=&quot;CSS布局&quot;&gt;&lt;/a&gt;CSS布局&lt;/h1&gt;&lt;p&gt;布局是CSS中一个重要部分，本文总结了CSS布局中的常用技巧，包括常用的水平居中、垂直居中方法，以及单列布局、多列布局的多种实现方式（包括传统的盒模型布局和比较新的flex布局实现），希望能给需要的小伙伴带来一些帮助。&lt;/p&gt;
 &lt;h3 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h3&gt;&lt;ol&gt;
