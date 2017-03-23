@@ -7,19 +7,20 @@
       <title><![CDATA[flex布局完全教程]]></title>
       <url>http://yoursite.com/2017/03/24/flex%E5%B8%83%E5%B1%80%E5%AE%8C%E5%85%A8%E6%95%99%E7%A8%8B/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>原文 <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="external">A Complete Guide to Flexbox</a><br> 作者：<a href="https://css-tricks.com/author/chriscoyier/" target="_blank" rel="external">CHRIS COYIER</a><br> 译者：Shelley Lee<br> 。</p>
+<p>原文：<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="external">A Complete Guide to Flexbox</a><br> 作者：<a href="https://css-tricks.com/author/chriscoyier/" target="_blank" rel="external">CHRIS COYIER</a><br> 译者：Shelley Lee<br> 未经同意不得转载。</p>
 </blockquote>
 <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>Flexbox 布局（也叫弹性盒子布局，目前在W3C最后一轮工作草案中）模块目标在于提供一个更有效地布局、对齐方式，并且能够使父元素在子元素的大小未知或动态变化情况下仍然能够分配好子元素之间的间隙。</p>
 <p>Flex布局的主要思想是使父元素能够调节子元素的高度、宽度和排布的顺序，从而能够最好地适应可用布局空间（能够适应不同的设备和不同大小的屏幕）。设定为flex布局的父元素（容器）能够放大子元素使之尽可能填充可用空间，也可以收缩子元素使之不溢出。</p>
 <p>最重要的是，与传统布局中块状元素按照垂直方向摆放，行内元素按照水平方向摆放相比，flex布局是无方向的。传统布局在应对大型复杂的布局时缺乏灵活性，特别是在改变方向、改变大小、伸展、收缩等等方面。</p>
 <p>Note: Flex 布局比较适合小规模的布局，Gird布局面向更大规模的布局。</p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Flex布局是一个完整的模块而不是一个单独的属性，它包括了完整的一套属性。其中有的属性是设置在容器（container，也可以叫做父元素，称为<code>flex container</code>）上，有的则是设置在容器的子元素上（flex items）上。</p>
-<p><img src="./images/flex-container.svg" alt=""><br><img src="./images/flex-items.svg" alt=""></p>
+<a id="more"></a> 
+<p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/flex-container.svg" alt=""><br><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/flex-items.svg" alt=""></p>
 <blockquote>
 <p>译者注：由于item译成项目不够直观和形象，以下统一用父元素指代container，子元素指代item。</p>
 </blockquote>
 <p>如果我们可以说传统布局是建立在块状元素垂直流和行内元素水平流上的，那么flex布局就是建立在”flex-flow方向”上的，通过下图解释flex布局的主要思想。</p>
-<p><img src="./images/flexbox.png" alt=""></p>
+<p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/flexbox.png" alt=""></p>
 <p>在flex布局中，子元素要么按照主轴也就是<code>main axis</code>（从<code>main-start</code>到<code>main-end</code>）排布，要么按照交叉轴，也就是<code>cross axis</code>(从<code>cross-start</code>到<code>cross-end</code>)排布。</p>
 <p>下面介绍几个概念：</p>
 <ul>
@@ -33,7 +34,7 @@
 <h2 id="属性介绍"><a href="#属性介绍" class="headerlink" title="属性介绍"></a>属性介绍</h2><p>属性分作用于父元素的属性和作用于子元素的属性两部分介绍。</p>
 <h3 id="父元素属性"><a href="#父元素属性" class="headerlink" title="父元素属性"></a>父元素属性</h3><h5 id="display"><a href="#display" class="headerlink" title="display"></a>display</h5><p>用来定义父元素是一个 flex布局容器。如果设置为<code>flex</code>则父元素为块状元素，设置为<code>inline-flex</code>父元素呈现为行内元素。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex; <span class="comment">/* or inline-flex */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h5><p><img src="./images/flex-direction2.svg" alt=""></p>
+<h5 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/flex-direction2.svg" alt=""></p>
 <p><code>flex-direction</code>定义flex布局的主轴方向。flex布局是单方向布局，子元素主要沿着水平行或者垂直列布局。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -42,7 +43,7 @@
 <li><code>column</code>: 列方向，与<code>row</code>相似，只是从上到下。</li>
 <li><code>column-reverse</code>: 列反方向，与<code>row-reverse</code>相似，只是从下岛上。</li>
 </ul>
-<h5 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h5><p><img src="./images/flex-wrap.svg" alt=""></p>
+<h5 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/flex-wrap.svg" alt=""></p>
 <p>默认情况下，flex布局中父元素会把子元素尽可能地排在同一行，通过设置<code>flex-wrap</code>来决定是否允许子元素这行排列。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">  <span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -53,7 +54,7 @@
 <p>这里有一些可视化的<a href="https://css-tricks.com/almanac/properties/f/flex-wrap/" target="_blank" rel="external">示例</a>。</p>
 <h5 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h5><p><code>flex-flow</code>是<code>flex-direction</code>和<code>flex-wrap</code>属性的缩写形式。默认值是<code>row,nowrap</code>。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex-flow: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;</div></pre></td></tr></table></figure>
-<h5 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h5><p><img src="./images/justify-content.svg" alt=""></p>
+<h5 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/justify-content.svg" alt=""></p>
 <p><code>justify-content</code>属性定义了子元素沿主轴方向的对齐方式，用来当子元素大小最大的时候，分配主轴上的剩余空间。也可以当子元素超出主轴的时候用来控制子元素的对齐方式。</p>
 <ul>
 <li><code>flex-start</code>: 默认值，朝主轴开始的方向对齐。</li>
@@ -63,7 +64,7 @@
 <li><code>space-around</code>: 沿主轴子元素之间均匀分布。要注意的是子元素看起来间隙是不均匀的，第一个子元素和最后一个子元素离父元素的边缘有一个单位的间隙，但两个子元素之间有两个单位的间隙，因为每个子元素的两侧都有一个单位的间隙。</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h5><p><img src="./images/align-items.svg" alt=""></p>
+<h5 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/align-items.svg" alt=""></p>
 <p><code>align-items</code>定义了子元素在交叉轴方向的对齐方向，这是在每个子元素仍然在其原来所在行的基础上所说的。可以看作是交叉轴上的<code>justify-content</code>属性;</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">align-items</span>: flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -73,7 +74,7 @@
 <li>baseline: 按照项目的第一行文字的基线对齐。</li>
 <li>stretch: 默认值，在满足子项目所设置的<code>min-height</code>、<code>max-height</code>、<code>height</code>的情况下拉伸子元素使之填充整个父元素。</li>
 </ul>
-<h5 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h5><p><img src="./images/align-content.svg" alt=""></p>
+<h5 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/align-content.svg" alt=""></p>
 <p><code>align-content</code>是当父元素所包含的行在交叉轴方向有空余部分时如何分配空间。与<code>justify-content</code>在主轴上如何对单个子元素对齐很相似。</p>
 <p><strong>注意</strong>：当只有一行的时候，该属性并不起作用。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -82,13 +83,13 @@
 <p><strong>译者注</strong>：注意<code>align-items</code>和<code>align-content</code>的区别，前者是指在单行内的子元素对齐方式，后者是指多行之间的对齐方式。</p>
 </blockquote>
 <h5 id="父元素属性总结"><a href="#父元素属性总结" class="headerlink" title="父元素属性总结"></a>父元素属性总结</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">display: flex|inline-flex;</div><div class="line">flex-direction: row | row-reverse | column | column-reverse;</div><div class="line">flex-wrap: nowrap | wrap | wrap-reverse;</div><div class="line">flex-flow: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;;</div><div class="line">justify-content: flex-start | flex-end | center | space-between | space-around;</div><div class="line">align-items: flex-start | flex-end | center | baseline | stretch;</div><div class="line">align-content: flex-start | flex-end | center | space-between | space-around | stretch;</div></pre></td></tr></table></figure>
-<h3 id="子元素属性"><a href="#子元素属性" class="headerlink" title="子元素属性"></a>子元素属性</h3><h5 id="order"><a href="#order" class="headerlink" title="order"></a>order</h5><p><img src="./images/order-2.svg" alt=""></p>
+<h3 id="子元素属性"><a href="#子元素属性" class="headerlink" title="子元素属性"></a>子元素属性</h3><h5 id="order"><a href="#order" class="headerlink" title="order"></a>order</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/order-2.svg" alt=""></p>
 <p>默认情况下，子元素按照代码书写的先后顺序布局，但<code>order</code>属性可以更改子元素出现的顺序。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">order</span>: &lt;integer&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>译者注</strong>：<code>order</code>的默认值为0;子元素的<code>order</code>值越小，布局越排在前面，参考例图理解。</p>
 </blockquote>
-<h5 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h5><p><img src="./images/flex-grow.svg" alt=""></p>
+<h5 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/flex-grow.svg" alt=""></p>
 <p><code>flex-grow</code>规定在空间允许的情况下，子元素如何按照比例分配可用剩余空间。如果所有的子元素的属性都设定为<code>1</code>,则父元素中的剩余空间会等分给所有子元素。如果其中某个子元素的<code>flex-grow</code>设定为2，则在分配剩余空间时该子元素将获得其他元素二倍的空间（至少会尽力获得）。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>注</strong>：<code>flex-grow</code>不接受负值。</p>
@@ -104,11 +105,11 @@
 <h5 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h5><p><code>flex-basis</code>定义了在计算剩余空间之前子元素默认的大小。可以设置为某个长度（e.g. 20%, 5rem, etc.）或者关键字。关键字<code>auto</code>意味着子元素会按照其本来的大小显示。关键字<code>content</code>意味着根据内容来确定大小——这个关键字到目前没有被很好地支持，所以测试起来比较困难，与<code>content</code>的类似的关键字还有<code>max-content</code>, <code>min-content</code>, <code>fit-content</code>。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果设置为0, 则子元素内容周围的空隙不会根据<code>flex-grow</code>按比例分配，如果设置为<code>auto</code>，则子元素周围额外的空袭会根据<code>flex-grow</code>按照比例分配，如下图：</p>
-<p><img src="./images/rel-vs-abs-flex.svg" alt=""></p>
+<p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/rel-vs-abs-flex.svg" alt=""></p>
 <h5 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h5><p><code>flex</code>是<code>flex-grow</code>、<code>flex-shrink</code>、<code>flex-basis</code>三个属性的缩写。其中第二个和第三个参数(<code>flex-grow</code>,<code>flex-basis</code>)是可选的。默认值为<code>0 1 auto</code>。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>推荐使用缩写形式而不是单独地设置每一个属性，缩写形式中会智能地计算出相关值。</p>
-<h5 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h5><p><img src="./images/align-self.svg" alt=""></p>
+<h5 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h5><p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/align-self.svg" alt=""></p>
 <p>通过设置某个子元素的<code>align-self</code>属性，可以覆盖<code>align-items</code>所设置的对齐方式。属性值与<code>align-items</code>中的意义相同，不再赘述。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>注</strong>：<code>float</code>,<code>clear</code>,和<code>vertical-align</code>对flex子元素没有任何影响。</p>
@@ -148,12 +149,24 @@
 <li>(tweener)是指2011年以后非官方的临时版本(e.g. <code>display:flexbox;</code>)。</li>
 <li>(old)是指2009年以后的旧语法(e.g. <code>display:box;</code>)</li>
 </ul>
-<p><img src="./images/browser-support.png" alt=""></p>
+<p><img src="http://ojr0cmiri.bkt.clouddn.com/a-complete-guide-to-flexbox/browser-support.png" alt=""></p>
 <p>Blackberry browser 10+ 支持新语法。</p>
 <p>更多混合使用语法达到最佳浏览器兼容，可以参考<a href="http://dev.opera.com/articles/view/advanced-cross-browser-flexbox/#fallbacks" target="_blank" rel="external"> this article (CSS-Tricks)](https://css-tricks.com/using-flexbox/)或者this article (DevOpera)</a></p>
 <h2 id="译者的话"><a href="#译者的话" class="headerlink" title="译者的话"></a>译者的话</h2><p>网上有不少flex相关教程，但当我看到<a href="https://css-tricks.com/author/chriscoyier/" target="_blank" rel="external">CHRIS COYIER</a>的这篇文章时，不禁被其详尽所震撼，最近也在撰写布局相关的文章，故产生了翻译此文的想法。翻译过程中尽量保持原文原貌，部分地方做了小幅调整以便更加符合中文思维。文中图片均来源于原文。水平有限，如有误漏之处，还请读者不吝赐教。最后希望此文能给读者带去帮助。</p>
 ]]></content>
       
+        
+        <tags>
+            
+            <tag> 前端基础 </tag>
+            
+            <tag> CSS </tag>
+            
+            <tag> CSS布局 </tag>
+            
+            <tag> Flexbox </tag>
+            
+        </tags>
         
     </entry>
     
