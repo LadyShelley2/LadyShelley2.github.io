@@ -11,7 +11,7 @@
 
 
 
-  <meta name="description" content="Done is better than perfect"/>
+  <meta name="description" content="flex布局完全教程"/>
 
 
 
@@ -28,18 +28,42 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
+<link rel="canonical" href="http://yoursite.com/2017/03/24/flex布局完全教程/"/>
 
 
-<meta name="description" content="Done is better than perfect">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Shelley">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="原文 A Complete Guide to Flexbox 作者：CHRIS COYIER 译者：Shelley Lee 。
+
+背景介绍Flexbox 布局（也叫弹性盒子布局，目前在W3C最后一轮工作草案中）模块目标在于提供一个更有效地布局、对齐方式，并且能够使父元素在子元素的大小未知或动态变化情况下仍然能够分配好子元素之间的间隙。
+Flex布局的主要思想是使父元素能够调节子元素的高度、宽度和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex布局完全教程">
+<meta property="og:url" content="http://yoursite.com/2017/03/24/flex布局完全教程/index.html">
 <meta property="og:site_name" content="Shelley">
-<meta property="og:description" content="Done is better than perfect">
+<meta property="og:description" content="原文 A Complete Guide to Flexbox 作者：CHRIS COYIER 译者：Shelley Lee 。
+
+背景介绍Flexbox 布局（也叫弹性盒子布局，目前在W3C最后一轮工作草案中）模块目标在于提供一个更有效地布局、对齐方式，并且能够使父元素在子元素的大小未知或动态变化情况下仍然能够分配好子元素之间的间隙。
+Flex布局的主要思想是使父元素能够调节子元素的高度、宽度和">
+<meta property="og:image" content="http://yoursite.com/./images/flex-container.svg">
+<meta property="og:image" content="http://yoursite.com/./images/flex-items.svg">
+<meta property="og:image" content="http://yoursite.com/./images/flexbox.png">
+<meta property="og:image" content="http://yoursite.com/./images/flex-direction2.svg">
+<meta property="og:image" content="http://yoursite.com/./images/flex-wrap.svg">
+<meta property="og:image" content="http://yoursite.com/./images/justify-content.svg">
+<meta property="og:image" content="http://yoursite.com/./images/align-items.svg">
+<meta property="og:image" content="http://yoursite.com/./images/align-content.svg">
+<meta property="og:image" content="http://yoursite.com/./images/order-2.svg">
+<meta property="og:image" content="http://yoursite.com/./images/flex-grow.svg">
+<meta property="og:image" content="http://yoursite.com/./images/rel-vs-abs-flex.svg">
+<meta property="og:image" content="http://yoursite.com/./images/align-self.svg">
+<meta property="og:image" content="http://yoursite.com/./images/browser-support.png">
+<meta property="og:updated_time" content="2017-03-23T16:04:27.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shelley">
-<meta name="twitter:description" content="Done is better than perfect">
+<meta name="twitter:title" content="flex布局完全教程">
+<meta name="twitter:description" content="原文 A Complete Guide to Flexbox 作者：CHRIS COYIER 译者：Shelley Lee 。
+
+背景介绍Flexbox 布局（也叫弹性盒子布局，目前在W3C最后一轮工作草案中）模块目标在于提供一个更有效地布局、对齐方式，并且能够使父元素在子元素的大小未知或动态变化情况下仍然能够分配好子元素之间的间隙。
+Flex布局的主要思想是使父元素能够调节子元素的高度、宽度和">
+<meta name="twitter:image" content="http://yoursite.com/./images/flex-container.svg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -75,7 +99,7 @@
 
 
 
-    <title> Shelley </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> flex布局完全教程 · Shelley </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -171,14 +195,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/03/24/flex布局完全教程/">flex布局完全教程</a>
+          flex布局完全教程
         
       </h1>
 
@@ -190,13 +212,17 @@
     </header>
 
     
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">Contents</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景介绍"><span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性介绍"><span class="toc-text">属性介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#父元素属性"><span class="toc-text">父元素属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#display"><span class="toc-text">display</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-direction"><span class="toc-text">flex-direction</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-wrap"><span class="toc-text">flex-wrap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-flow"><span class="toc-text">flex-flow</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#justify-content"><span class="toc-text">justify-content</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#align-items"><span class="toc-text">align-items</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#align-content"><span class="toc-text">align-content</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#父元素属性总结"><span class="toc-text">父元素属性总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子元素属性"><span class="toc-text">子元素属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#order"><span class="toc-text">order</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-grow"><span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-shrink"><span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex-basis"><span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex"><span class="toc-text">flex</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#align-self"><span class="toc-text">align-self</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器前缀"><span class="toc-text">浏览器前缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关属性"><span class="toc-text">相关属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他资源"><span class="toc-text">其他资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bugs"><span class="toc-text">Bugs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器支持"><span class="toc-text">浏览器支持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#译者的话"><span class="toc-text">译者的话</span></a></li></ol>
+        </div>
+      </div>
+    
 
     <div class="post-content">
       
-        
-
-        
-          <blockquote>
+        <blockquote>
 <p>原文 <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="external">A Complete Guide to Flexbox</a><br> 作者：<a href="https://css-tricks.com/author/chriscoyier/" target="_blank" rel="external">CHRIS COYIER</a><br> 译者：Shelley Lee<br> 。</p>
 </blockquote>
 <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>Flexbox 布局（也叫弹性盒子布局，目前在W3C最后一轮工作草案中）模块目标在于提供一个更有效地布局、对齐方式，并且能够使父元素在子元素的大小未知或动态变化情况下仍然能够分配好子元素之间的间隙。</p>
@@ -343,82 +369,23 @@
 <p>更多混合使用语法达到最佳浏览器兼容，可以参考<a href="http://dev.opera.com/articles/view/advanced-cross-browser-flexbox/#fallbacks" target="_blank" rel="external"> this article (CSS-Tricks)](https://css-tricks.com/using-flexbox/)或者this article (DevOpera)</a></p>
 <h2 id="译者的话"><a href="#译者的话" class="headerlink" title="译者的话"></a>译者的话</h2><p>网上有不少flex相关教程，但当我看到<a href="https://css-tricks.com/author/chriscoyier/" target="_blank" rel="external">CHRIS COYIER</a>的这篇文章时，不禁被其详尽所震撼，最近也在撰写布局相关的文章，故产生了翻译此文的想法。翻译过程中尽量保持原文原貌，部分地方做了小幅调整以便更加符合中文思维。文中图片均来源于原文。水平有限，如有误漏之处，还请读者不吝赐教。最后希望此文能给读者带去帮助。</p>
 
-        
       
     </div>
 
     
   </article>
 
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/01/13/CSS布局十八般武艺都在这里了/">CSS布局十八般武艺都在这里了</a>
-        
-      </h1>
 
-      <div class="post-meta">
-        <span class="post-time">
-          Jan 13, 2017
-        </span>
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/24/flex布局完全教程/"
+           data-title="flex布局完全教程" data-url="http://yoursite.com/2017/03/24/flex布局完全教程/">
       </div>
-    </header>
-
     
+  </div>
 
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <blockquote>
-<p>本文首发于<a href="https://zhuanlan.zhihu.com/p/25565751">知乎专栏：前端指南</a></p>
-</blockquote>
-<h1 id="CSS布局"><a href="#CSS布局" class="headerlink" title="CSS布局"></a>CSS布局</h1><p>布局是CSS中一个重要部分，本文总结了CSS布局中的常用技巧，包括常用的水平居中、垂直居中方法，以及单列布局、多列布局的多种实现方式（包括传统的盒模型布局和比较新的flex布局实现），希望能给需要的小伙伴带来一些帮助。</p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ol>
-<li>常用居中方法<ul>
-<li>水平居中</li>
-<li>垂直居中</li>
-</ul>
-</li>
-<li>单列布局</li>
-<li>二列&amp;三列布局<ul>
-<li>float+margin</li>
-<li>position+margin</li>
-<li>圣杯布局（float+负margin）</li>
-<li>双飞翼布局（float+负margin）</li>
-<li>flex布局</li>
-</ul>
-</li>
-<li>总结</li>
-</ol>
-          <div class="read-more">
-            <a href="/2017/01/13/CSS布局十八般武艺都在这里了/" class="read-more-link">Read more..</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
-    
-  </nav>
-
-
-          </div>
-          
         </div>  
       </main>
 
