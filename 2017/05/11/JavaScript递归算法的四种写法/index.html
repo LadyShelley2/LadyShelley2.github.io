@@ -16,6 +16,8 @@
 
 
 
+  <meta name="keywords" content="JavaScript,前端开发,算法," />
+
 
 
 
@@ -31,28 +33,22 @@
 <link rel="canonical" href="http://yoursite.com/2017/05/11/JavaScript递归算法的四种写法/"/>
 
 
-<meta name="description" content="title: 递归算法三种写法(Javascript)date: 2017-05-11 11:32:12tags:-JavaScript-前端开发
--算法
- 转载需提前联系译者，未经允许不得转载。本篇文章为《JavaScript语言精粹》学习笔记。
+<meta name="description" content="转载需提前联系译者，未经允许不得转载。本篇文章为《JavaScript语言精粹》学习笔记。
 
-提纲《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScrip">
+提纲《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScript中函数是第一公民、闭包等思想实现了通用的递归，很巧妙，特做笔记以便日后温故而知新。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript递归算法的四种写法">
 <meta property="og:url" content="http://yoursite.com/2017/05/11/JavaScript递归算法的四种写法/index.html">
 <meta property="og:site_name" content="Shelley">
-<meta property="og:description" content="title: 递归算法三种写法(Javascript)date: 2017-05-11 11:32:12tags:-JavaScript-前端开发
--算法
- 转载需提前联系译者，未经允许不得转载。本篇文章为《JavaScript语言精粹》学习笔记。
+<meta property="og:description" content="转载需提前联系译者，未经允许不得转载。本篇文章为《JavaScript语言精粹》学习笔记。
 
-提纲《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScrip">
-<meta property="og:updated_time" content="2017-05-11T06:02:02.787Z">
+提纲《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScript中函数是第一公民、闭包等思想实现了通用的递归，很巧妙，特做笔记以便日后温故而知新。">
+<meta property="og:updated_time" content="2017-05-11T06:18:45.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript递归算法的四种写法">
-<meta name="twitter:description" content="title: 递归算法三种写法(Javascript)date: 2017-05-11 11:32:12tags:-JavaScript-前端开发
--算法
- 转载需提前联系译者，未经允许不得转载。本篇文章为《JavaScript语言精粹》学习笔记。
+<meta name="twitter:description" content="转载需提前联系译者，未经允许不得转载。本篇文章为《JavaScript语言精粹》学习笔记。
 
-提纲《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScrip">
+提纲《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScript中函数是第一公民、闭包等思想实现了通用的递归，很巧妙，特做笔记以便日后温故而知新。">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -204,16 +200,14 @@
       <div class="post-toc" id="post-toc">
         <h2 class="post-toc-title">Contents</h2>
         <div class="post-toc-content">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法"><span class="toc-text">-算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提纲"><span class="toc-text">提纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一种写法"><span class="toc-text">第一种写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二种写法"><span class="toc-text">第二种写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三种写法"><span class="toc-text">第三种写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四种写法"><span class="toc-text">第四种写法</span></a>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#提纲"><span class="toc-text">提纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一种写法"><span class="toc-text">第一种写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二种写法"><span class="toc-text">第二种写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三种写法"><span class="toc-text">第三种写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四种写法"><span class="toc-text">第四种写法</span></a></li></ol>
         </div>
       </div>
     
 
     <div class="post-content">
       
-        <hr>
-<p>title: 递归算法三种写法(Javascript)<br>date: 2017-05-11 11:32:12<br>tags:<br>-JavaScript<br>-前端开发</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="-算法"></a>-算法</h2><blockquote>
+        <blockquote>
 <p> 转载需提前联系译者，未经允许不得转载。<br>本篇文章为《JavaScript语言精粹》学习笔记。</p>
 </blockquote>
 <h1 id="提纲"><a href="#提纲" class="headerlink" title="提纲"></a>提纲</h1><p>《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScript中函数是第一公民、闭包等思想实现了通用的递归，很巧妙，特做笔记以便日后温故而知新。</p>
@@ -237,6 +231,31 @@
       
     </div>
 
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/">JavaScript</a>
+          
+            <a href="/tags/前端开发/">前端开发</a>
+          
+            <a href="/tags/算法/">算法</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/03/24/Flex布局完全教程/">
+        <span class="next-text nav-default">Flex布局完全教程</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
     
   </article>
 
