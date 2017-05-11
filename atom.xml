@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-11T06:18:45.913Z</updated>
+  <updated>2017-05-11T06:25:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,17 +20,14 @@
     <link href="http://yoursite.com/2017/05/11/JavaScript%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%86%99%E6%B3%95/"/>
     <id>http://yoursite.com/2017/05/11/JavaScript递归算法的四种写法/</id>
     <published>2017-05-11T06:01:43.000Z</published>
-    <updated>2017-05-11T06:18:45.913Z</updated>
+    <updated>2017-05-11T06:25:51.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p> 转载需提前联系译者，未经允许不得转载。<br>本篇文章为《JavaScript语言精粹》学习笔记。</p>
 </blockquote>
 <h1 id="提纲"><a href="#提纲" class="headerlink" title="提纲"></a>提纲</h1><p>《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScript中函数是第一公民、闭包等思想实现了通用的递归，很巧妙，特做笔记以便日后温故而知新。</p>
 <a id="more"></a> 
-<p>#题目说明</p>
-<p>以递归经典题目fabonacci数列为例，公式如下：</p>
-<p>$$<br>F<em>n=\left{<br>    \begin{Array}{ll}<br>        0 &amp; \textrm{if}n=0;\<br>        1 &amp; \textrm{if}n=1;<br>        F</em>{n-1}+F_{n-2} &amp; \textrm{if} n\lt2.<br>    \end{Array}<br>    \right.<br>$$</p>
-<p>通俗来讲就是第一项为0，第二项为1，之后的每项等于前两项之和，因此数列为</p>
+<h1 id="题目说明"><a href="#题目说明" class="headerlink" title="题目说明"></a>题目说明</h1><p>以递归经典题目fabonacci数列为例，fabonacci数列第一项为0，第二项为1，之后的每项等于前两项之和，因此数列的前几个元素为</p>
 <p>$$<br>0,1,1,2,3,5,8,13,\ldots<br>$$</p>
 <h1 id="第一种写法"><a href="#第一种写法" class="headerlink" title="第一种写法"></a>第一种写法</h1><p>最普通的写法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> n&lt;<span class="number">2</span>?n:(fibonacci(n<span class="number">-1</span>)+fibonacci(n<span class="number">-2</span>));</div><div class="line">&#125;</div><div class="line">fibonacci(<span class="number">3</span>)</div></pre></td></tr></table></figure>
