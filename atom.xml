@@ -64,7 +64,7 @@
     <link href="http://yoursite.com/2017/03/24/Flex%E5%B8%83%E5%B1%80%E5%AE%8C%E5%85%A8%E6%95%99%E7%A8%8B/"/>
     <id>http://yoursite.com/2017/03/24/Flex布局完全教程/</id>
     <published>2017-03-23T16:02:04.000Z</published>
-    <updated>2017-03-24T12:28:14.000Z</updated>
+    <updated>2017-05-11T06:42:33.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>原文：<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="external">A Complete Guide to Flexbox</a><br> 作者：<a href="https://css-tricks.com/author/chriscoyier/" target="_blank" rel="external">CHRIS COYIER</a><br> 译者：Shelley Lee<br> 本文同时发布于<a href="https://zhuanlan.zhihu.com/fe-guide" target="_blank" rel="external">知乎专栏：前端指南</a><br> 转载需提前联系译者，未经允许不得转载。</p>
@@ -232,13 +232,13 @@
     </summary>
     
     
-      <category term="前端基础" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+      <category term="Flexbox" scheme="http://yoursite.com/tags/Flexbox/"/>
     
       <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
     
       <category term="CSS布局" scheme="http://yoursite.com/tags/CSS%E5%B8%83%E5%B1%80/"/>
     
-      <category term="Flexbox" scheme="http://yoursite.com/tags/Flexbox/"/>
+      <category term="前端基础" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -408,11 +408,11 @@
     </summary>
     
     
-      <category term="前端基础" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
-    
       <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
     
       <category term="CSS布局" scheme="http://yoursite.com/tags/CSS%E5%B8%83%E5%B1%80/"/>
+    
+      <category term="前端基础" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
