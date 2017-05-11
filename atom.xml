@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-24T12:28:14.000Z</updated>
+  <updated>2017-05-11T06:02:02.787Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript递归算法的四种写法</title>
+    <link href="http://yoursite.com/2017/05/11/JavaScript%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%86%99%E6%B3%95/"/>
+    <id>http://yoursite.com/2017/05/11/JavaScript递归算法的四种写法/</id>
+    <published>2017-05-11T06:01:43.000Z</published>
+    <updated>2017-05-11T06:02:02.787Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>title: 递归算法三种写法(Javascript)<br>date: 2017-05-11 11:32:12<br>tags:<br>-JavaScript<br>-前端开发</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="-算法"></a>-算法</h2><blockquote>
+<p> 转载需提前联系译者，未经允许不得转载。<br>本篇文章为《JavaScript语言精粹》学习笔记。</p>
+</blockquote>
+<h1 id="提纲"><a href="#提纲" class="headerlink" title="提纲"></a>提纲</h1><p>《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScript中函数是第一公民、闭包等思想实现了通用的递归，很巧妙，特做笔记以便日后温故而知新。</p>
+<a id="more"></a> 
+<p>#题目说明</p>
+<p>以递归经典题目fabonacci数列为例，公式如下：</p>
+<p>$$<br>F<em>n=\left{<br>    \begin{Array}{ll}<br>        0 &amp; \textrm{if}n=0;\<br>        1 &amp; \textrm{if}n=1;<br>        F</em>{n-1}+F_{n-2} &amp; \textrm{if} n\lt2.<br>    \end{Array}<br>    \right.<br>$$</p>
+<p>通俗来讲就是第一项为0，第二项为1，之后的每项等于前两项之和，因此数列为</p>
+<p>$$<br>0,1,1,2,3,5,8,13,\ldots<br>$$</p>
+<h1 id="第一种写法"><a href="#第一种写法" class="headerlink" title="第一种写法"></a>第一种写法</h1><p>最普通的写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> n&lt;<span class="number">2</span>?n:(fibonacci(n<span class="number">-1</span>)+fibonacci(n<span class="number">-2</span>));</div><div class="line">&#125;</div><div class="line">fibonacci(<span class="number">3</span>)</div></pre></td></tr></table></figure>
+<p>这种写法的主要问题在于计算次数，时间复杂度为指数$O(2^n)$</p>
+<h1 id="第二种写法"><a href="#第二种写法" class="headerlink" title="第二种写法"></a>第二种写法</h1><p>用一个数组将中间结果存下来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> memo = [<span class="number">0</span>,<span class="number">1</span>];</div><div class="line">  <span class="keyword">var</span> innerf = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> memo[n] != <span class="string">'number'</span>)&#123;</div><div class="line">      memo[n] = innerf(n<span class="number">-1</span>)+innerf(n<span class="number">-2</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> memo[n];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> innerf(num);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(f(<span class="number">4</span>))</div></pre></td></tr></table></figure>
+<h1 id="第三种写法"><a href="#第三种写法" class="headerlink" title="第三种写法"></a>第三种写法</h1><p>从递归树最底层向上算</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">   <span class="keyword">var</span> memo=[<span class="number">0</span>,<span class="number">1</span>];</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</div><div class="line">     <span class="keyword">if</span>(<span class="keyword">typeof</span> memo[i] != <span class="string">'number'</span>)&#123;</div><div class="line">       memo[i] = memo[i<span class="number">-1</span>]+memo[i<span class="number">-2</span>];</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line">  <span class="keyword">return</span> memo[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="第四种写法"><a href="#第四种写法" class="headerlink" title="第四种写法"></a>第四种写法</h1><p>封装递归函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> memoizer = <span class="function"><span class="keyword">function</span> (<span class="params">memo, formula</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> recur = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> memo[n]!=<span class="string">'number'</span>)&#123;</div><div class="line">      memo[n]=formula(recur,n);      </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> memo[n];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> recur;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fabonacci = memoizer([<span class="number">0</span>,<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">recur,n</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> recur(n<span class="number">-1</span>)+recur(n<span class="number">-2</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>扩展很简单，求阶乘</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> factorial = memoizer([<span class="number">1</span>,<span class="number">1</span>],<span class="function"><span class="keyword">function</span>(<span class="params">recur,n</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> n*recur(n<span class="number">-1</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: 递归算法三种写法(Javascript)&lt;br&gt;date: 2017-05-11 11:32:12&lt;br&gt;tags:&lt;br&gt;-JavaScript&lt;br&gt;-前端开发&lt;/p&gt;
+&lt;h2 id=&quot;算法&quot;&gt;&lt;a href=&quot;#算法&quot; class=&quot;headerlink&quot; title=&quot;-算法&quot;&gt;&lt;/a&gt;-算法&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt; 转载需提前联系译者，未经允许不得转载。&lt;br&gt;本篇文章为《JavaScript语言精粹》学习笔记。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;提纲&quot;&gt;&lt;a href=&quot;#提纲&quot; class=&quot;headerlink&quot; title=&quot;提纲&quot;&gt;&lt;/a&gt;提纲&lt;/h1&gt;&lt;p&gt;《JavaScript语言精粹》函数记忆一章中提到了记忆一节，通过递归的例子说明将中间结果存下来对算法性能的提升，并巧妙利用JavaScript中函数是第一公民、闭包等思想实现了通用的递归，很巧妙，特做笔记以便日后温故而知新。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Flex布局完全教程</title>
