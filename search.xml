@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[post]]></title>
+      <url>http://yoursite.com/2017/05/14/post/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript递归算法的四种写法]]></title>
       <url>http://yoursite.com/2017/05/11/JavaScript%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%86%99%E6%B3%95/</url>
       <content type="html"><![CDATA[<blockquote>
