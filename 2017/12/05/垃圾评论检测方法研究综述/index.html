@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="垃圾评论检测方法研究综述"/>
+
+
+
+
+  <meta name="keywords" content="数据挖掘,机器学习," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shelley">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/12/05/垃圾评论检测方法研究综述/"/>
+
+
+<meta name="description" content="1.任务介绍随着互联网的普及，电子商务飞速发展。而在电子商务中，商品的评论直接影响用户对商品的印象进而影响销量。在利益的驱动下部分商家和个人为了快速提高自身产品的竞争能力或者打击竞争对手的商品，通过刷单服务获取大量好评和销售量。同时投机者使用电子商务平台较大的点击量发布恶意信息，如广告信息、垃圾网络链接以及黄赌毒信息，产生大量垃圾评论。垃圾评论已经严重影响电子商务平台交易的公平性和用户的切身利益。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="垃圾评论检测方法研究综述">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/垃圾评论检测方法研究综述/index.html">
+<meta property="og:site_name" content="Shelley">
+<meta property="og:description" content="1.任务介绍随着互联网的普及，电子商务飞速发展。而在电子商务中，商品的评论直接影响用户对商品的印象进而影响销量。在利益的驱动下部分商家和个人为了快速提高自身产品的竞争能力或者打击竞争对手的商品，通过刷单服务获取大量好评和销售量。同时投机者使用电子商务平台较大的点击量发布恶意信息，如广告信息、垃圾网络链接以及黄赌毒信息，产生大量垃圾评论。垃圾评论已经严重影响电子商务平台交易的公平性和用户的切身利益。">
+<meta property="og:image" content="http://yoursite.com/./images/stylometry.png">
+<meta property="og:image" content="http://yoursite.com/./images/target.png">
+<meta property="og:image" content="http://yoursite.com/./images/spamicity.png">
+<meta property="og:image" content="http://yoursite.com/./images/store.png">
+<meta property="og:image" content="http://yoursite.com/./images/comparison.png">
+<meta property="og:image" content="http://yoursite.com/./images/tensor_fac.png">
+<meta property="og:image" content="http://yoursite.com/./images/rnn_cnn.png">
+<meta property="og:image" content="http://yoursite.com/./images/cnn_res.png">
+<meta property="og:updated_time" content="2017-12-05T03:17:10.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="垃圾评论检测方法研究综述">
+<meta name="twitter:description" content="1.任务介绍随着互联网的普及，电子商务飞速发展。而在电子商务中，商品的评论直接影响用户对商品的印象进而影响销量。在利益的驱动下部分商家和个人为了快速提高自身产品的竞争能力或者打击竞争对手的商品，通过刷单服务获取大量好评和销售量。同时投机者使用电子商务平台较大的点击量发布恶意信息，如广告信息、垃圾网络链接以及黄赌毒信息，产生大量垃圾评论。垃圾评论已经严重影响电子商务平台交易的公平性和用户的切身利益。">
+<meta name="twitter:image" content="http://yoursite.com/./images/stylometry.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f29aeed2f059e5c86ef8b128ce0aa248";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-90357969-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> 垃圾评论检测方法研究综述 · Shelley </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Shelley</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            About
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">Shelley</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      
+      <a class="mobile-menu-item" href="/">
+        Home
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/archives/">
+        Archives
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/tags">
+        Tags
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/about">
+        About
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          垃圾评论检测方法研究综述
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Dec 5, 2017
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">Contents</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-任务介绍"><span class="toc-text">1.任务介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-典型方法"><span class="toc-text">2.典型方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-词法分析"><span class="toc-text">2.1 词法分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建模行为信息"><span class="toc-text">2.2 建模行为信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-检测异常评论行为"><span class="toc-text">2.2.1 检测异常评论行为</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-群体行为分析"><span class="toc-text">2.2.2 群体行为分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-基于图关系的方法"><span class="toc-text">2.2.3 基于图关系的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-基于分布的方法"><span class="toc-text">2.2.4 基于分布的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-统计建模"><span class="toc-text">2.3 统计建模</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-矩阵分解"><span class="toc-text">2.3.1 矩阵分解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-深度学习方法"><span class="toc-text">3. 深度学习方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-总结"><span class="toc-text">4. 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-text">参考文献</span></a></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <h2 id="1-任务介绍"><a href="#1-任务介绍" class="headerlink" title="1.任务介绍"></a>1.任务介绍</h2><p>随着互联网的普及，电子商务飞速发展。而在电子商务中，商品的评论直接影响用户对商品的印象进而影响销量。在利益的驱动下部分商家和个人为了快速提高自身产品的竞争能力或者打击竞争对手的商品，通过刷单服务获取大量好评和销售量。同时投机者使用电子商务平台较大的点击量发布恶意信息，如广告信息、垃圾网络链接以及黄赌毒信息，产生大量垃圾评论。垃圾评论已经严重影响电子商务平台交易的公平性和用户的切身利益。如何保证用户评论信息的真实性和客观性以及如何检测类似的欺诈行为成为当前研究的一个热点，同时高质量的评论分析也是商品评论挖掘和情感分析的一个重要预处理步骤。本篇文章探讨了垃圾评论领域经典方法以及深度学习催生的新方法，并对比它们的效果。</p>
+<p>垃圾评论主要分为两类，第一类是内容型垃圾评论，即在评论内容中发布广告、评论内容与主题相关性低和在评论内容中发布黄赌毒信息等；第二类为欺诈性评论，即评论发布者通过作弊手段达到提升信誉度、增加销售量的目的。如电商平台中的刷单服务就是典型的欺诈行为。</p>
+<a id="more"></a> 
+<h2 id="2-典型方法"><a href="#2-典型方法" class="headerlink" title="2.典型方法"></a>2.典型方法</h2><p>垃圾评论特征主要来源于三种：评论内容、评论者以及被评论的商品。典型的垃圾评论检测方法分为利用评论文法信息、行为信息建模、以及数据统计建模三大类。在每一大类中又有很多具体的方法，以下对这些方法展开讨论和性能比较。</p>
+<h3 id="2-1-词法分析"><a href="#2-1-词法分析" class="headerlink" title="2.1 词法分析"></a>2.1 词法分析</h3><p>对句子中的词进行词法分析建立稀疏语法树，从而获得更深层的语法特征。</p>
+<p><img src="./images/stylometry.png" alt=""></p>
+<p>采用线性分类器，5-fold交叉验证，主要采取了Lexical、Shallow syntax、Deep syntax等特征，具体特征值根据TF-IDF算法进行计算。根据论文[]中提供的结果，在数据集 Tripadvisor、Essay、Yelp上的结果分别如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Feature Set</th>
+<th style="text-align:center">TripAd visor</th>
+<th style="text-align:center">Essay</th>
+<th style="text-align:center">Yelp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Words</td>
+<td style="text-align:center">88.4</td>
+<td style="text-align:center">77.0</td>
+<td style="text-align:center">59.9</td>
+</tr>
+<tr>
+<td style="text-align:center">Shallow Syntax</td>
+<td style="text-align:center">87.4</td>
+<td style="text-align:center">80.0</td>
+<td style="text-align:center">62.0</td>
+</tr>
+<tr>
+<td style="text-align:center">Deep Syntax</td>
+<td style="text-align:center">90.4</td>
+<td style="text-align:center">78.0</td>
+<td style="text-align:center">63.5</td>
+</tr>
+<tr>
+<td style="text-align:center">Deep Syntax + Words</td>
+<td style="text-align:center">91.2</td>
+<td style="text-align:center">85.0</td>
+<td style="text-align:center">64.3</td>
+</tr>
+</tbody>
+</table>
+<p>提升了3-8%的准确率。</p>
+<h3 id="2-2-建模行为信息"><a href="#2-2-建模行为信息" class="headerlink" title="2.2 建模行为信息"></a>2.2 建模行为信息</h3><p>基于语言信息的模型很好，但是缺乏对撒谎行为上的捕捉、判别垃圾信号时容错性差、评论者非常容易逃脱规则。</p>
+<h4 id="2-2-1-检测异常评论行为"><a href="#2-2-1-检测异常评论行为" class="headerlink" title="2.2.1 检测异常评论行为"></a>2.2.1 检测异常评论行为</h4><p>垃圾评论者一般对所评论的商品有一定目标性，倾向于评论一类相似的产品，在论文[]中，定义了$E_{ij}$为用户$i$向用户$j$的评论。图标中呈现的是评论者——商品对的数量，一些评论者对同一件商品进行了多次评论，因此以目标商品为驱动的异常评论行为是存在的。</p>
+<p><img src="./images/target.png" alt=""></p>
+<p>评论者对购物网站中产品的评论、评分、购买以及用户之间的交流行为都体现了其特定目的，通过对购物网站中评论者的行为特征分析，假设产品垃圾评论者存在以下 5 种行为模式：(1)同一用户对同一产品发表多个评论或多次评分的行为模式。(2)同一用户对同一产品组的不同产品发表多个评论或多次评分的行为模式。(3)用户评分与平均评分偏差较大的行为模式。(4)其他用户对某用户发表的评论回应较少的行为模式。(5)一个用户对产品的购买次数远小于评论次数的行为模式。根据用户的不同行为模式，针对用户进行建模，每个模型都采用打分的方法来衡量用户为垃圾评论者的可能性，得分越高为垃圾评论者的可能性就越大。关于五种行为的详细建模过程参考论文《基于用户行为的产品垃圾评论者检测研究》（邱云飞等）。</p>
+<p>实验结果：<br><img src="./images/spamicity.png" alt=""></p>
+<p>总体来说，实验的结果显示了本文方法在检测垃圾评论者与非垃圾评论者方面与手工标记垃圾评论者是大致相同的，尤其是目标产品组的方法更好地代表了用户的垃圾评论者的特征行为。</p>
+<h4 id="2-2-2-群体行为分析"><a href="#2-2-2-群体行为分析" class="headerlink" title="2.2.2 群体行为分析"></a>2.2.2 群体行为分析</h4><p>垃圾评论发布团体检测比垃圾评论发布者检测多一个用户团体的划分过程，通过聚类方式对评论进行用户团体划分，然后通过分析用户团体的异常行为检测欺诈型评论。</p>
+<h4 id="2-2-3-基于图关系的方法"><a href="#2-2-3-基于图关系的方法" class="headerlink" title="2.2.3 基于图关系的方法"></a>2.2.3 基于图关系的方法</h4><p>将评论者和评论连接，将评论与产品连接形成图，形成评论关系图。分别定义评论者可信度、评论真实度、商量可靠度等指标进行衡量。详细算法参考论文[Fei et al. ICWSM 2013]</p>
+<p><img src="./images/store.png" alt=""></p>
+<h4 id="2-2-4-基于分布的方法"><a href="#2-2-4-基于分布的方法" class="headerlink" title="2.2.4 基于分布的方法"></a>2.2.4 基于分布的方法</h4><p>基于分布的方法主要是通过分析评论的时间分布、地域分布等信息检测垃圾评论。根据分布信息提取特征主要有以下几种：</p>
+<ol>
+<li>检测评论爆发；用马尔科夫随机场对评论发布信息建模[Fei et al.<br>ICWSM 2013]。</li>
+<li>在时域层面分析评论。分析垃圾评论和非垃圾评论发布时间的分布。</li>
+<li>分析IP和Cookie信息。</li>
+<li>地理信息。</li>
+</ol>
+<p>根据文法信息提取特征和根据行为信息提取特征，实验对比：</p>
+<p><img src="./images/comparison.png" alt=""></p>
+<h3 id="2-3-统计建模"><a href="#2-3-统计建模" class="headerlink" title="2.3 统计建模"></a>2.3 统计建模</h3><h4 id="2-3-1-矩阵分解"><a href="#2-3-1-矩阵分解" class="headerlink" title="2.3.1 矩阵分解"></a>2.3.1 矩阵分解</h4><p>构建参数表达评论者和评论两者之间的关系以及两者的属性之间的关系，例如是否浏览过、打分记录等等参数，将特征组合在一起构成特征向量。将多组向量放在一起形成评论者和评论的关系矩阵，对关系矩阵进行张量分解[ Nickel et al. 2011]，从而得到映射到另一个空间，得到隐层特征。</p>
+<p><img src="./images/tensor_fac.png" alt=""></p>
+<h2 id="3-深度学习方法"><a href="#3-深度学习方法" class="headerlink" title="3. 深度学习方法"></a>3. 深度学习方法</h2><p>深度学习方法如卷积神经网络（CNN）和循环神经网络被广泛用于图像识别、自然语言处理等多个模式识别领域，在论文《Deceptive Opinion Spam Detection Using Neural Network》中，作者设计了CNN和RNN融合的深度学习模型，模型结构如下图：</p>
+<p><img src="./images/rnn_cnn.png" alt=""></p>
+<p>论文中采用Word Embedding提取特征，实验结果如下：</p>
+<p><img src="./images/cnn_res.png" alt=""></p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><p>本篇文章对垃圾评论检测典型方法与深度学习方法进行了总结，传统的评论文法分析、用户行为分析、矩阵分析等方法对垃圾评论检测效果逐步提升。而近几年来在图像和自然语言处理领域大显身手的卷积神经网络和循环神经网络也提高了垃圾评论检测的准确率处所有方法中领先水平。与传统方法不同的是，深度学习有更好的扩展性，通过改变结构、层数等方式较传统方法更容易获得效果提升。另外不同结构网络（CNN、RNN、DBN等）之间的配合重组有可能产生更好的效果。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><p>Leman Akoglu, Rishi Chandy, and Christos Faloutsos. 2013. Opinion Fraud Detection in Online Reviews by Network Effects. In Proceedings of the AAAI International Conference on Web and Social Media.</p>
+</li>
+<li><p>Shlomo Argamon, Casey Whitelaw, Paul Chase, Sobhan Raj Hota, Navendu Garg, and Shlomo Levitan. 2007. Stylistic text classification using functional lexical features. Journal of the American Society for Information Science and Technology, 58(6):802–822.</p>
+</li>
+<li><p>Avrim Blum and Tom Mitchell. 1998. Combining labeled and unlabeled data with co‐training. In Proceedings of the eleventh annual conference on Computational learning theory, pages 92–100. Jacob Eisenstein, Brendan O’Connor, Noah A. Smith, and Eric P. Xing. 2010. A latent variable model for geographic</p>
+</li>
+<li><p>lexical variation. Empirical Methods in Natural Language Processing:1277–1287, October. G. Fei, A. Mukherjee, B. Liu, M. Hsu, M. Castellanos, and R. Ghosh. 2013. Exploiting Burstiness in Reviews for Review Spammer Detection. AAAI International Conference on Weblogs and Social Media.</p>
+</li>
+<li><p>Song Feng, Longfei Xing, Anupam Gogar, and Yejin Choi. 2012. Distributional Footprints of Deceptive Product Reviews. In The International AAAI Conference on Weblogs and Social Media.</p>
+</li>
+<li><p>Y. Feng, S., Banerjee R., Choi. 2012. Syntactic Stylometry for Deception Detection. In Association for<br>Computational Linguistics.</p>
+</li>
+<li><p>Donato Hernandez Fusilier, Rafael Guzman Cabrera, Manuel Montes‐y‐Gomez, and Paolo Rosso. 2013. Using PU‐<br>Learning to Detect Deceptive Opinion Spam. ACL Workshop on Computational Approaches to Subjectivity,<br>Sentiment and Social Media Analysis.</p>
+</li>
+<li><p>Aristides Gionis, Piotr Indyk, and Rajeev Motwani. 1999. imilarity Search in High Dimensions via Hashing.Proceedings of the 25th International Conference on Very Large Data Bases:518–529, September.</p>
+</li>
+<li><p>Nitin Jindal and Bing Liu. 2007. Review spam detection. In Proceedings of the 16th international conference on World Wide Web ‐ WWW ’07, page 1189, New York, New York, USA, May. ACM Press.</p>
+</li>
+<li><p>Nitin Jindal and Bing Liu. 2008. Opinion Spam and Analysis. In ACM International Conference on Web Search and Data Mining.</p>
+</li>
+<li><p>Sangkyum Kim, Hyungsul Kim, Tim Weninger, Jiawei Han, and Hyun Duk Kim. 2011. Authorship classification: a discriminative syntactic tree mining approach. In Proceedings of the 34th international ACM SIGIR conference on Research and development in Information Retrieval, pages 455–464.</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/数据挖掘/">数据挖掘</a>
+          
+            <a href="/tags/机器学习/">机器学习</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/05/14/post/">
+        <span class="next-text nav-default">post</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/12/05/垃圾评论检测方法研究综述/"
+           data-title="垃圾评论检测方法研究综述" data-url="http://yoursite.com/2017/12/05/垃圾评论检测方法研究综述/">
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:libeibei1995@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/LadyShelley2" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/shelley-lee-94" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Shelley Lee</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"leebeibei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
