@@ -43,11 +43,11 @@
 <meta property="og:image" content="http://yoursite.com/./images/target.png">
 <meta property="og:image" content="http://yoursite.com/./images/spamicity.png">
 <meta property="og:image" content="http://yoursite.com/./images/store.png">
-<meta property="og:image" content="http://yoursite.com/./images/comparison.png">
+<meta property="og:image" content="http://yoursite.com/./spam_images/comparison.png">
 <meta property="og:image" content="http://yoursite.com/./images/tensor_fac.png">
 <meta property="og:image" content="http://yoursite.com/./images/rnn_cnn.png">
 <meta property="og:image" content="http://yoursite.com/./images/cnn_res.png">
-<meta property="og:updated_time" content="2017-12-05T03:17:10.653Z">
+<meta property="og:updated_time" content="2017-12-05T03:24:42.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="垃圾评论检测方法研究综述">
 <meta name="twitter:description" content="1.任务介绍随着互联网的普及，电子商务飞速发展。而在电子商务中，商品的评论直接影响用户对商品的印象进而影响销量。在利益的驱动下部分商家和个人为了快速提高自身产品的竞争能力或者打击竞争对手的商品，通过刷单服务获取大量好评和销售量。同时投机者使用电子商务平台较大的点击量发布恶意信息，如广告信息、垃圾网络链接以及黄赌毒信息，产生大量垃圾评论。垃圾评论已经严重影响电子商务平台交易的公平性和用户的切身利益。">
@@ -271,7 +271,7 @@
 <li>地理信息。</li>
 </ol>
 <p>根据文法信息提取特征和根据行为信息提取特征，实验对比：</p>
-<p><img src="./images/comparison.png" alt=""></p>
+<p><img src="./spam_images/comparison.png" alt=""></p>
 <h3 id="2-3-统计建模"><a href="#2-3-统计建模" class="headerlink" title="2.3 统计建模"></a>2.3 统计建模</h3><h4 id="2-3-1-矩阵分解"><a href="#2-3-1-矩阵分解" class="headerlink" title="2.3.1 矩阵分解"></a>2.3.1 矩阵分解</h4><p>构建参数表达评论者和评论两者之间的关系以及两者的属性之间的关系，例如是否浏览过、打分记录等等参数，将特征组合在一起构成特征向量。将多组向量放在一起形成评论者和评论的关系矩阵，对关系矩阵进行张量分解[ Nickel et al. 2011]，从而得到映射到另一个空间，得到隐层特征。</p>
 <p><img src="./images/tensor_fac.png" alt=""></p>
 <h2 id="3-深度学习方法"><a href="#3-深度学习方法" class="headerlink" title="3. 深度学习方法"></a>3. 深度学习方法</h2><p>深度学习方法如卷积神经网络（CNN）和循环神经网络被广泛用于图像识别、自然语言处理等多个模式识别领域，在论文《Deceptive Opinion Spam Detection Using Neural Network》中，作者设计了CNN和RNN融合的深度学习模型，模型结构如下图：</p>

@@ -67,7 +67,7 @@
 <li>地理信息。</li>
 </ol>
 <p>根据文法信息提取特征和根据行为信息提取特征，实验对比：</p>
-<p><img src="./images/comparison.png" alt=""></p>
+<p><img src="./spam_images/comparison.png" alt=""></p>
 <h3 id="2-3-统计建模"><a href="#2-3-统计建模" class="headerlink" title="2.3 统计建模"></a>2.3 统计建模</h3><h4 id="2-3-1-矩阵分解"><a href="#2-3-1-矩阵分解" class="headerlink" title="2.3.1 矩阵分解"></a>2.3.1 矩阵分解</h4><p>构建参数表达评论者和评论两者之间的关系以及两者的属性之间的关系，例如是否浏览过、打分记录等等参数，将特征组合在一起构成特征向量。将多组向量放在一起形成评论者和评论的关系矩阵，对关系矩阵进行张量分解[ Nickel et al. 2011]，从而得到映射到另一个空间，得到隐层特征。</p>
 <p><img src="./images/tensor_fac.png" alt=""></p>
 <h2 id="3-深度学习方法"><a href="#3-深度学习方法" class="headerlink" title="3. 深度学习方法"></a>3. 深度学习方法</h2><p>深度学习方法如卷积神经网络（CNN）和循环神经网络被广泛用于图像识别、自然语言处理等多个模式识别领域，在论文《Deceptive Opinion Spam Detection Using Neural Network》中，作者设计了CNN和RNN融合的深度学习模型，模型结构如下图：</p>
